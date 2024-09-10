@@ -34,6 +34,7 @@ rt-thread/components/drivers/core \
 rt-thread/components/drivers/ipc \
 rt-thread/components/drivers/misc \
 rt-thread/components/drivers/serial \
+rt-thread/components/drivers/spi \
 rt-thread/components/finsh \
 rt-thread/components/libc/compilers/common \
 rt-thread/components/libc/compilers/newlib \

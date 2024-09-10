@@ -87,6 +87,7 @@
 #define RT_USING_SERIAL_V2
 #define RT_SERIAL_USING_DMA
 #define RT_USING_PIN
+#define RT_USING_SPI
 
 /* Using USB */
 
@@ -315,6 +316,9 @@
 #define BSP_USING_UART0
 #define BSP_UART0_RX_BUFSIZE 128
 #define BSP_UART0_TX_BUFSIZE 0
+#define BSP_USING_SPI
+#define BSP_USING_SPI1
+#define BSP_SPI1_USING_SOFT_CS
 /* end of On-chip Peripheral Drivers */
 
 /* Segger SystemView Config */

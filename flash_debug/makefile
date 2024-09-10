@@ -15,6 +15,7 @@ RM := rm -rf
 -include rt-thread/components/libc/compilers/newlib/subdir.mk
 -include rt-thread/components/libc/compilers/common/subdir.mk
 -include rt-thread/components/finsh/subdir.mk
+-include rt-thread/components/drivers/spi/subdir.mk
 -include rt-thread/components/drivers/serial/subdir.mk
 -include rt-thread/components/drivers/misc/subdir.mk
 -include rt-thread/components/drivers/ipc/subdir.mk
