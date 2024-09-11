@@ -59,19 +59,15 @@ static int LCD_Device_Init(void)
     }
     rt_spi_configure(lcd_device, &cfg);
     //前面的频率配置没用，锁在了80M。
-//    LOG_I("SPI FRE :%d",board_init_spi_clock(HPM_SPI1));
+
     rt_pin_mode(LCD_DC_PIN, PIN_MODE_OUTPUT);
     GC9A01_Init();
-//    rt_uint16_t rand_num;
-//    srand(rt_tick_get());
-//    rand_num=rand();
-//    LOG_I("rand num :%d",rand_num);
-//    GC9A01_FillRect(0,0,239,239,0xf800);
+    GC9A01_FillRect(0,0,239,239,0XF800);
     return RT_EOK;
 }
 
 /* 导出到自动初始化 */
-INIT_COMPONENT_EXPORT(LCD_Device_Init);
+INIT_DEVICE_EXPORT(LCD_Device_Init);
 static int LCD_refresh_test(void)
 {
     uint8_t tick=10;
@@ -85,7 +81,7 @@ static int LCD_refresh_test(void)
     }
 
 }
-INIT_APP_EXPORT(LCD_refresh_test);
+//INIT_APP_EXPORT(LCD_refresh_test);
 
 uint8_t GC9A01_X_Start = 0, GC9A01_Y_Start = 0;
 /*
@@ -364,8 +360,8 @@ void GC9A01_DrawPixel(int16_t x, int16_t y, uint16_t color)
 if ((x < 0) ||(x >= GC9A01_Width) || (y < 0) || (y >= GC9A01_Height))
     return;
 
-GC9A01_SetWindow(x, y, x, y);
-GC9A01_RamWrite(&color, 1);
+    GC9A01_SetWindow(x, y, x, y);
+    GC9A01_RamWrite(&color, 1);
 }
 
 
@@ -389,10 +385,11 @@ void GC9A01_FillRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color)
     }
 //        GC9A01_RamWrite(&color, 1);
 
-
+}
+void GC9A01_ColorFill(int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color)
+{
 
 }
-
 //uint16_t color_buffer[2400];
 void GC9A01_Clear(uint16_t color)
 {
@@ -567,7 +564,7 @@ void GC9A01_Init()
         cmd++;
     }
 
-    MemAccessModeSet(0,0,0,1);
+    MemAccessModeSet(3,0,0,1);
     ColorModeSet(ColorMode_MCU_16bit);
 
     GC9A01_InversionMode(1);
