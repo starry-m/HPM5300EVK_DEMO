@@ -10,6 +10,9 @@
 #ifndef BOARD_DRV_AS5600_H_
 #define BOARD_DRV_AS5600_H_
 
+#include "stdint.h"
 
-
+float getAngle_Without_track();
+uint16_t getRawAngle();
+float getAngle();
 #endif /* BOARD_DRV_AS5600_H_ */

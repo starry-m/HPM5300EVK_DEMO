@@ -8,7 +8,7 @@ cwd = GetCurrentDir()
 CPPDEFINES=[]
 
 # Update include path
-path = [ os.path.join(cwd, 'debug_console'), os.path.join(cwd, 'touch'), os.path.join(cwd, 'usb'), os.path.join(cwd, 'dma_mgr')]
+path = [ os.path.join(cwd, 'debug_console'), os.path.join(cwd, 'touch'), os.path.join(cwd, 'usb'), os.path.join(cwd, 'dma_mgr'), os.path.join(cwd, 'adc')]
 
 # The set of source files associated with this SConscript file.
 src = []

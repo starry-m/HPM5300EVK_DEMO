@@ -12,6 +12,10 @@
  * MOSI:A29
  * DC:PA30
  *
+ * * CS:PB04
+ * SCK:PB05
+ * MOSI:PB07
+ * DC:PB10
  * **/
 #if (CONFIG_GC9A01_RESET_USED)
 #define RESET_HIGH()           gpio_set_level(CONFIG_GC9A01_PIN_NUM_RST,1)
@@ -24,8 +28,8 @@
 #endif
 #define SPI_MAX_DMA_LEN 1024
 static struct rt_spi_device *lcd_device;
-#define SPI_LCD_DEVICE_NAME "spi1-lcd"
-#define LCD_DC_PIN rt_pin_get("PA30")
+#define SPI_LCD_DEVICE_NAME "spi3-lcd"
+#define LCD_DC_PIN rt_pin_get("PB10")
 static void spi_write_byte(uint8_t data) { rt_spi_send(lcd_device, &data, 1); }
 //https://github.com/liyanboy74/gc9a01-esp-idf
 void GC9A01_Init();
@@ -39,13 +43,13 @@ static int LCD_Device_Init(void)
         LOG_E("Failed to malloc the spi device.");
         return -RT_ENOMEM;
     }
-    if (RT_EOK != rt_spi_bus_attach_device_cspin(lcd_device, "spi1-lcd", "spi1",rt_pin_get("PA25"), RT_NULL))
+    if (RT_EOK != rt_spi_bus_attach_device_cspin(lcd_device, SPI_LCD_DEVICE_NAME, "spi3",rt_pin_get("PB04"), RT_NULL))
     {
         LOG_E("Failed to attach the spi device.");
         return -RT_ERROR;
     }
 
-    if (RT_NULL == rt_device_find("spi1-lcd"))
+    if (RT_NULL == rt_device_find(SPI_LCD_DEVICE_NAME))
     {
         LOG_E("Failed to probe the lcd.");
         return -RT_ERROR;

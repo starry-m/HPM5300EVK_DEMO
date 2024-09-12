@@ -17,3 +17,11 @@ r,0.01
 gain,50
 IA,35
 IB,34
+
+
+## 记录
+
+`#include "hpm_adc.h"`报错，
+修改`libraries\hpm_sdk\components\SConscript   path = [ os.path.join(cwd, 'debug_console'), os.path.join(cwd, 'touch'), os.path.join(cwd, 'usb'), os.path.join(cwd, 'dma_mgr'), os.path.join(cwd, 'adc')]
+`
+

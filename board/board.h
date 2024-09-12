@@ -292,6 +292,42 @@
 #define BOARD_PLB_PWM_CHN              (8U)
 #define BOARD_PLB_CHN                  plb_chn0
 
+
+/*adc*/
+#define BOARD_BLDC_ADC_MODULE                  (ADCX_MODULE_ADC16)
+#define BOARD_BLDC_ADC_U_BASE                  HPM_ADC0
+#define BOARD_BLDC_ADC_V_BASE                  HPM_ADC1
+#define BOARD_BLDC_ADC_TRIG_FLAG               adc16_event_trig_complete
+
+//#define BOARD_BLDC_ADC_CH_U                    (1U)
+//#define BOARD_BLDC_ADC_CH_V                    (11U)
+#define BOARD_BLDC_ADC_CH_VBUS_1               (14U)
+#define BOARD_BLDC_ADC_CH_VBUS_2               (7U)
+#define BOARD_BLDC_ADC_IRQn                    IRQn_ADC0
+#define BOARD_BLDC_ADC_SEQ_DMA_SIZE_IN_4BYTES  (48U)
+#define BOARD_BLDC_ADC_CH_V_TRG                ADC16_CONFIG_TRG0A
+#define BOARD_BLDC_ADC_CH_W_TRG                ADC16_CONFIG_TRG0B
+#define BOARD_BLDC_ADC_PREEMPT_TRIG_LEN        (1U)
+#define BOARD_BLDC_PWM_TRIG_CMP_INDEX          (8U)
+#define BOARD_BLDC_TRIGMUX_IN_NUM              HPM_TRGM0_INPUT_SRC_PWM0_CH8REF
+#define BOARD_BLDC_TRG_NUM                     TRGM_TRGOCFG_ADCX_PTRGI0A
+
+#define BOARD_PLB_COUNTER   HPM_PLB
+#define BOARD_PLB_PWM_BASE  HPM_PWM0
+#define BOARD_PLB_PWM_CLOCK_NAME clock_mot0
+#define BOARD_PLB_TRGM                HPM_TRGM0
+#define BOARD_PLB_PWM_TRG                       (HPM_TRGM0_INPUT_SRC_PWM0_CH8REF)
+#define BOARD_PLB_IN_PWM_TRG_NUM                (TRGM_TRGOCFG_PLB_IN_00)
+#define BOARD_PLB_IN_PWM_PULSE_TRG_NUM          (TRGM_TRGOCFG_PLB_IN_02)
+#define BOARD_PLB_OUT_TRG                       (HPM_TRGM0_INPUT_SRC_PLB_OUT00)
+#define BOARD_PLB_IO_TRG_NUM                    (TRGM_TRGOCFG_MOT_GPIO2)
+#define BOARD_PLB_IO_TRG_SHIFT                    (2)
+#define BOARD_PLB_PWM_CMP                       (8U)
+#define BOARD_PLB_PWM_CHN                       (8U)
+#define BOARD_PLB_CHN    plb_chn0
+
+
+
 /* QEO */
 #define BOARD_QEO          HPM_QEO0
 #define BOARD_QEO_TRGM_POS trgm_pos_matrix_output_to_qeo0

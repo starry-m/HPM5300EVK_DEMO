@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: BSD-3-Clause
 cmake_minimum_required(VERSION 3.13)
 
+
 cmake_policy(SET CMP0079 NEW)
 
 project(hpm_sdk)

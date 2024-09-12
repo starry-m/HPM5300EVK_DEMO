@@ -7,6 +7,7 @@
 #ifndef HPM_ADC_H
 #define HPM_ADC_H
 
+#define HPMSOC_HAS_HPMSDK_ADC16
 #include "hpm_common.h"
 #ifdef HPMSOC_HAS_HPMSDK_ADC12
 #include "hpm_adc12_drv.h"

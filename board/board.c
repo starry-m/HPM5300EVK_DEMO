@@ -422,7 +422,8 @@ uint32_t board_init_adc16_clock(ADC16_Type *ptr, bool clk_src_ahb)
 
 void board_init_adc16_pins(void)
 {
-    init_adc_pins();
+//    init_adc_pins();
+    init_adc_bldc_pins();
 }
 
 uint32_t board_init_dac_clock(DAC_Type *ptr, bool clk_src_ahb)

@@ -88,6 +88,8 @@
 #define RT_SERIAL_USING_DMA
 #define RT_USING_I2C
 #define RT_USING_PIN
+#define RT_USING_ADC
+#define RT_USING_PWM
 #define RT_USING_SPI
 
 /* Using USB */
@@ -181,13 +183,6 @@
 
 /* LVGL: powerful and easy-to-use embedded GUI library */
 
-#define PKG_USING_LVGL
-#define PKG_LVGL_THREAD_PRIO 20
-#define PKG_LVGL_THREAD_STACK_SIZE 4096
-#define PKG_LVGL_DISP_REFR_PERIOD 5
-#define PKG_LVGL_USING_V080311
-#define PKG_LVGL_VER_NUM 0x080311
-#define PKG_USING_LV_MUSIC_DEMO
 /* end of LVGL: powerful and easy-to-use embedded GUI library */
 
 /* u8g2: a monochrome graphic library */
@@ -325,10 +320,14 @@
 #define BSP_UART0_RX_BUFSIZE 128
 #define BSP_UART0_TX_BUFSIZE 0
 #define BSP_USING_SPI
-#define BSP_USING_SPI1
-#define BSP_SPI1_USING_SOFT_CS
+#define BSP_USING_SPI3
+#define BSP_SPI3_USING_SOFT_CS
 #define BSP_USING_I2C
 #define BSP_USING_I2C0
+#define BSP_USING_PWM
+#define BSP_USING_ADC
+#define BSP_USING_ADC16
+#define BSP_USING_ADC0
 /* end of On-chip Peripheral Drivers */
 
 /* Segger SystemView Config */
