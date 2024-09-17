@@ -63,13 +63,11 @@ static int LCD_Device_Init(void)
     }
     rt_spi_configure(lcd_device, &cfg);
     //前面的频率配置没用，锁在了80M。
-
     rt_pin_mode(LCD_DC_PIN, PIN_MODE_OUTPUT);
     GC9A01_Init();
     GC9A01_FillRect(0,0,239,239,0XF800);
     return RT_EOK;
 }
-
 /* 导出到自动初始化 */
 INIT_DEVICE_EXPORT(LCD_Device_Init);
 static int LCD_refresh_test(void)

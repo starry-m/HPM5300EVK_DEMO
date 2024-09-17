@@ -44,7 +44,10 @@
 __IO uint16_t read_raw_angel=0;
 static void timer_config(void);
 static void mt6701_isr_callback(uint32_t isr_flag);
-
+extern int now_pos ;
+extern int last_pos ;
+extern int knob_value ;
+extern int32_t arc_offset;
 typedef struct
 {
     float data[15];
@@ -210,6 +213,9 @@ int main(void)
    uint32_t count=0;
    uint16_t last_angle = 0;
    int16_t angle_diff = 0;
+   read_raw_angel=encoder_get_rawAngle();
+   now_pos=read_raw_angel*360/4096.0f;
+   last_pos=read_raw_angel*360/4096.0f;
     while(1){
        count++;
        read_raw_angel=encoder_get_rawAngle();
@@ -217,6 +223,27 @@ int main(void)
        motor0.angle_exp = ((int)((read_raw_angel + 256)/512))*512;
 
        rt_thread_mdelay(1);
+       now_pos=read_raw_angel*360/4096.0f;
+
+       if (now_pos > last_pos)
+       {
+           knob_value++;
+//           konb_direction = 2;
+           if (knob_value >8) {
+              knob_value =8;
+           }
+           last_pos = now_pos;
+       }
+       else if (now_pos < last_pos)
+       {
+           knob_value--;
+//           konb_direction = 1;
+           if (knob_value < 0) {
+               knob_value =0;
+           }
+           last_pos = now_pos;
+       }
+//       arc_offset=read_raw_angel-;
        if(count %50==0)
        {
            board_led_toggle();

@@ -123,7 +123,30 @@ static int LCD_Device_Init(void)
 /* 导出到自动初始化 */
 INIT_DEVICE_EXPORT(LCD_Device_Init);
 ```
-随后是LVGL接口的适配，
+随后是LVGL接口的适配
+``` c
+static void disp_flush(lv_disp_drv_t * disp_drv, const lv_area_t * area, lv_color_t * color_p)
+{
+    if(disp_flush_enabled) {
+        int32_t x;
+        int32_t y;
+        for(y = area->y1; y <= area->y2; y++) {
+            for(x = area->x1; x <= area->x2; x++) {
+                GC9A01_DrawPixel(x,y,color_p->full);
+                color_p++;
+            }
+        }
+
+    }
+    lv_disp_flush_ready(disp_drv);
+}
+```
+这里的刷屏使用的画点，并且用来RTT标准驱动，导致刷屏很慢，后期等熟悉HPM的SPI DMA模式，使用这种方式来刷屏。
+目前从x-knob的界面复制了一部分过来。
 - USB HID适配
+这部分打算跑`cherryusb`协议栈，但目前还处于计划表阶段，还没做。
+[代码仓库地址](https://github.com/starry-m/HPM5300EVK_DEMO)
+## 四、现象
 
-
+## 五、总结
+摊子铺的太大加上时间没安排好，导致做的项目乱七八糟，希望自己改正，后面一定要把他做完。在此也感谢RTT举办了这个比赛，让我能有机会玩到这么好的板子。
