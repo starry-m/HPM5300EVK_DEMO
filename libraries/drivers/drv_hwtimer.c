@@ -115,7 +115,7 @@ void gptmr1_isr(void)
 {
     hpm_hwtmr_isr(&timer1);
 }
-RTT_DECLARE_EXT_ISR_M(IRQn_GPTMR1, gptmr1_isr);
+//RTT_DECLARE_EXT_ISR_M(IRQn_GPTMR1, gptmr1_isr);
 #endif
 
 #ifdef BSP_USING_GPTMR2
@@ -277,6 +277,6 @@ int rt_hw_hwtimer_init(void)
     return ret;
 }
 
-INIT_BOARD_EXPORT(rt_hw_hwtimer_init);
+//INIT_BOARD_EXPORT(rt_hw_hwtimer_init);
 
 #endif /* BSP_USING_GPTMR */

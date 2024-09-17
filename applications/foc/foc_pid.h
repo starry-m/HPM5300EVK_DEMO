@@ -18,7 +18,7 @@ typedef struct
 void foc_pid_init(foc_pid_contrl_t *pid);
 
 float foc_pi_controller(foc_pid_contrl_t *pid, float cur, float exp);
-float foc_pid_controller(foc_pid_contrl_t *pid, float cur, float d, float exp);
+float foc_pid_controller(foc_pid_contrl_t *pid, float cur, float exp);
 float foc_pid_increase_controller(foc_pid_contrl_t *pid, float cur, float exp);
 
 

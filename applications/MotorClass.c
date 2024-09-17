@@ -26,39 +26,46 @@ void Motor_RunFoc(MotorClass_t *motor)
     }
 
     /* 低速环 */
-    if (++motor->intr_count >= (PWM_FREQUENCY / SPEED_PID_FREQUENCY))
-    {
-        motor->intr_count = 0;
-        // foc_pll(&motor->speed_pll, &sin_cos);
-        // motor->speed = motor->speed_pll.speed / motor->encoder.pole_pairs / (2 * F_PI) * 60 * SPEED_PID_FREQUENCY;
-        foc_pll2(&motor->speed_pll, motor->raw_angle);
-        motor->speed = motor->speed_pll.speed * 60 * SPEED_PID_FREQUENCY;
-        if (motor->mode == ANGLE_MODE)
-        {
-            int diff = foc_pid_diff(motor->raw_angle, motor->angle_exp, 65536);
-            motor->speed_exp = foc_pi_controller(&motor->angle_pid, diff, 0);
-        }
-
-        if (motor->mode >= SPEED_MODE)
-        {
-            motor->qd_current_exp.iq = foc_pi_controller(&motor->speed_pid, motor->speed, motor->speed_exp);
-        }
-    }
+//    if (++motor->intr_count >= (5000 / SPEED_PID_FREQUENCY))
+//    {
+//        motor->intr_count = 0;
+//        // foc_pll(&motor->speed_pll, &sin_cos);
+//        // motor->speed = motor->speed_pll.speed / motor->encoder.pole_pairs / (2 * F_PI) * 60 * SPEED_PID_FREQUENCY;
+//        foc_pll2(&motor->speed_pll, motor->raw_angle);
+//        //motor->speed = motor->speed_pll.speed * 60 * SPEED_PID_FREQUENCY;
+//        if (motor->mode == ANGLE_MODE)
+//        {
+//            int diff = foc_pid_diff(motor->raw_angle, motor->angle_exp, 4096);
+//            motor->speed_exp = foc_pid_controller(&motor->angle_pid, diff, 0);
+//        }
+//
+//        if (motor->mode >= SPEED_MODE)
+//        {
+//
+//
+//            motor->qd_current_exp.iq = foc_pid_controller(&motor->speed_pid, motor->speed, motor->speed_exp);
+//        }
+//    }
 
     /* 电流环或更上层环计算 */
-    if (motor->mode >= CURRENT_MODE)
-    {
-        motor->power =
-            (motor->qd_voltage_exp.iq * motor->qd_current.iq + motor->qd_voltage_exp.id * motor->qd_current.id) *
-            motor->bus_voltage * 0.75f + 1.5f; // 估计值 0.75补偿系数，1.5静态功耗
-
-        foc_clarke(&motor->uvw_current, &alpha_beta_current);
-        foc_park(&alpha_beta_current, &sin_cos, &motor->qd_current);
-        motor->qd_voltage_exp.iq =
-            foc_pi_controller(&motor->current_iq_pid, motor->qd_current.iq, motor->qd_current_exp.iq);
-        motor->qd_voltage_exp.id =
-            foc_pi_controller(&motor->current_id_pid, motor->qd_current.id, motor->qd_current_exp.id);
-    }
+//    if (motor->mode >= CURRENT_MODE)
+//    {
+//        motor->power =
+//            (motor->qd_voltage_exp.iq * motor->qd_current.iq + motor->qd_voltage_exp.id * motor->qd_current.id) *
+//            motor->bus_voltage * 0.75f + 1.5f; // 估计值 0.75补偿系数，1.5静态功耗
+//
+//        foc_clarke(&motor->uvw_current, &alpha_beta_current);
+//        foc_park(&alpha_beta_current, &sin_cos, &motor->qd_current);
+//        motor->qd_voltage_exp.iq =
+//                foc_pid_controller(&motor->current_iq_pid, motor->qd_current.iq, motor->qd_current_exp.iq);
+//        motor->qd_voltage_exp.id =
+//                foc_pid_controller(&motor->current_id_pid, motor->qd_current.id, motor->qd_current_exp.id);
+//    }
+    float diff = foc_pid_diff(motor->raw_angle, motor->angle_exp, 4096);
+    motor->qd_voltage_exp.iq =
+                   foc_pid_controller(&motor->angle_pid, diff, 0);
+    motor->qd_voltage_exp.id =
+                   foc_pid_controller(&motor->current_id_pid, motor->qd_current.id, motor->qd_current_exp.id);
 
     foc_inv_park(&motor->qd_voltage_exp, &sin_cos, &alpha_beta_voltage);
     foc_svpwm(&alpha_beta_voltage, &pwm);

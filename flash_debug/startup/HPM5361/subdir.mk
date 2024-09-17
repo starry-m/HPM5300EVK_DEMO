@@ -7,6 +7,10 @@ C_SRCS += \
 ../startup/HPM5361/startup.c \
 ../startup/HPM5361/trap.c 
 
+O_SRCS += \
+../startup/HPM5361/startup.o \
+../startup/HPM5361/trap.o 
+
 OBJS += \
 ./startup/HPM5361/startup.o \
 ./startup/HPM5361/trap.o 

@@ -7,6 +7,7 @@ C_SRCS += \
 ../libraries/hpm_sdk/drivers/src/hpm_adc16_drv.c \
 ../libraries/hpm_sdk/drivers/src/hpm_dmav2_drv.c \
 ../libraries/hpm_sdk/drivers/src/hpm_gpio_drv.c \
+../libraries/hpm_sdk/drivers/src/hpm_gptmr_drv.c \
 ../libraries/hpm_sdk/drivers/src/hpm_i2c_drv.c \
 ../libraries/hpm_sdk/drivers/src/hpm_pcfg_drv.c \
 ../libraries/hpm_sdk/drivers/src/hpm_pllctlv2_drv.c \
@@ -15,10 +16,24 @@ C_SRCS += \
 ../libraries/hpm_sdk/drivers/src/hpm_spi_drv.c \
 ../libraries/hpm_sdk/drivers/src/hpm_uart_drv.c 
 
+O_SRCS += \
+../libraries/hpm_sdk/drivers/src/hpm_adc16_drv.o \
+../libraries/hpm_sdk/drivers/src/hpm_dmav2_drv.o \
+../libraries/hpm_sdk/drivers/src/hpm_gpio_drv.o \
+../libraries/hpm_sdk/drivers/src/hpm_gptmr_drv.o \
+../libraries/hpm_sdk/drivers/src/hpm_i2c_drv.o \
+../libraries/hpm_sdk/drivers/src/hpm_pcfg_drv.o \
+../libraries/hpm_sdk/drivers/src/hpm_pllctlv2_drv.o \
+../libraries/hpm_sdk/drivers/src/hpm_pmp_drv.o \
+../libraries/hpm_sdk/drivers/src/hpm_pwm_drv.o \
+../libraries/hpm_sdk/drivers/src/hpm_spi_drv.o \
+../libraries/hpm_sdk/drivers/src/hpm_uart_drv.o 
+
 OBJS += \
 ./libraries/hpm_sdk/drivers/src/hpm_adc16_drv.o \
 ./libraries/hpm_sdk/drivers/src/hpm_dmav2_drv.o \
 ./libraries/hpm_sdk/drivers/src/hpm_gpio_drv.o \
+./libraries/hpm_sdk/drivers/src/hpm_gptmr_drv.o \
 ./libraries/hpm_sdk/drivers/src/hpm_i2c_drv.o \
 ./libraries/hpm_sdk/drivers/src/hpm_pcfg_drv.o \
 ./libraries/hpm_sdk/drivers/src/hpm_pllctlv2_drv.o \
@@ -31,6 +46,7 @@ C_DEPS += \
 ./libraries/hpm_sdk/drivers/src/hpm_adc16_drv.d \
 ./libraries/hpm_sdk/drivers/src/hpm_dmav2_drv.d \
 ./libraries/hpm_sdk/drivers/src/hpm_gpio_drv.d \
+./libraries/hpm_sdk/drivers/src/hpm_gptmr_drv.d \
 ./libraries/hpm_sdk/drivers/src/hpm_i2c_drv.d \
 ./libraries/hpm_sdk/drivers/src/hpm_pcfg_drv.d \
 ./libraries/hpm_sdk/drivers/src/hpm_pllctlv2_drv.d \

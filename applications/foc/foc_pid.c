@@ -15,9 +15,12 @@ float foc_pi_controller(foc_pid_contrl_t *pid, float cur, float exp)
     return foc_pid_limit(output, pid->output_limit);
 }
 
-float foc_pid_controller(foc_pid_contrl_t *pid, float cur, float d, float exp)
+float foc_pid_controller(foc_pid_contrl_t *pid, float cur,float exp)
 {
     float err = exp - cur;
+    static float last_err=0;
+    float d = err - last_err;
+    last_err = err;
     pid->integral = foc_pid_limit(pid->integral + err, pid->integral_limit);
     float output = pid->kp * err + pid->ki * pid->integral + pid->kd * d;
     return foc_pid_limit(output, pid->output_limit);

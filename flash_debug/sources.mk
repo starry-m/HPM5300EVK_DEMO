@@ -25,6 +25,23 @@ applications/current_calibration \
 applications/electrical_angle_calibration \
 applications/foc \
 board \
+build/applications \
+build/applications/current_calibration \
+build/applications/electrical_angle_calibration \
+build/applications/foc \
+build/board \
+build/kernel/components/drivers/core \
+build/kernel/components/drivers/hwtimer \
+build/kernel/components/drivers/i2c \
+build/kernel/components/drivers/ipc \
+build/kernel/components/drivers/misc \
+build/kernel/components/drivers/serial \
+build/kernel/components/drivers/spi \
+build/kernel/components/finsh \
+build/kernel/components/libc/compilers/common \
+build/kernel/components/libc/compilers/newlib \
+build/kernel/libcpu/risc-v/common \
+build/kernel/src \
 libraries/drivers \
 libraries/hpm_sdk/components/debug_console \
 libraries/hpm_sdk/components/dma_mgr \
@@ -34,6 +51,7 @@ libraries/hpm_sdk/soc/HPM5300/HPM5361 \
 libraries/misc/rtt_interrupt_util \
 libraries/misc/rtt_os_tick \
 rt-thread/components/drivers/core \
+rt-thread/components/drivers/hwtimer \
 rt-thread/components/drivers/i2c \
 rt-thread/components/drivers/ipc \
 rt-thread/components/drivers/misc \
@@ -44,6 +62,7 @@ rt-thread/components/libc/compilers/common \
 rt-thread/components/libc/compilers/newlib \
 rt-thread/libcpu/risc-v/common \
 rt-thread/src \
+. \
 startup/HPM5361 \
 startup/HPM5361/toolchains/gcc \
 

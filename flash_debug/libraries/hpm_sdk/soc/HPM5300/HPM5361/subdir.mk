@@ -10,6 +10,13 @@ C_SRCS += \
 ../libraries/hpm_sdk/soc/HPM5300/HPM5361/hpm_sysctl_drv.c \
 ../libraries/hpm_sdk/soc/HPM5300/HPM5361/system.c 
 
+O_SRCS += \
+../libraries/hpm_sdk/soc/HPM5300/HPM5361/hpm_clock_drv.o \
+../libraries/hpm_sdk/soc/HPM5300/HPM5361/hpm_l1c_drv.o \
+../libraries/hpm_sdk/soc/HPM5300/HPM5361/hpm_otp_drv.o \
+../libraries/hpm_sdk/soc/HPM5300/HPM5361/hpm_sysctl_drv.o \
+../libraries/hpm_sdk/soc/HPM5300/HPM5361/system.o 
+
 OBJS += \
 ./libraries/hpm_sdk/soc/HPM5300/HPM5361/hpm_clock_drv.o \
 ./libraries/hpm_sdk/soc/HPM5300/HPM5361/hpm_l1c_drv.o \

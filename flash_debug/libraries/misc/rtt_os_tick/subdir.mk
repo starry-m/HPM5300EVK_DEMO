@@ -6,6 +6,9 @@
 C_SRCS += \
 ../libraries/misc/rtt_os_tick/hpm_rtt_os_tick.c 
 
+O_SRCS += \
+../libraries/misc/rtt_os_tick/hpm_rtt_os_tick.o 
+
 OBJS += \
 ./libraries/misc/rtt_os_tick/hpm_rtt_os_tick.o 
 

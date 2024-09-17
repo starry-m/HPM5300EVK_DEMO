@@ -6,6 +6,9 @@
 C_SRCS += \
 ../libraries/hpm_sdk/components/debug_console/hpm_debug_console.c 
 
+O_SRCS += \
+../libraries/hpm_sdk/components/debug_console/hpm_debug_console.o 
+
 OBJS += \
 ./libraries/hpm_sdk/components/debug_console/hpm_debug_console.o 
 

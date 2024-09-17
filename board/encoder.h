@@ -85,7 +85,12 @@ void encoder_get_eleAngle_sincos(const encoder_t *self, foc_sin_cos_t *sincos)
 #else
 static inline float encoder_get_eleAngle(const encoder_t *self, uint16_t raw_ang)
 {
-    return ((int32_t)(raw_ang - self->ang_offset) * self->pole_pairs) * (2.0f * F_PI / 65536.0f);;
+    //AS5600 是12位 最大 4096
+    //return ((int32_t)(raw_ang - self->ang_offset) * self->pole_pairs) * (2.0f * F_PI / 4096.0f);
+    float tmp = ((int32_t)((raw_ang - self->ang_offset+4096)%4096) * self->pole_pairs) * (2.0f * F_PI / 4096.0f);
+    while(tmp>2.0*F_PI)
+        tmp -= 2.0*F_PI;
+    return tmp;
 }
 
 static inline void encoder_get_eleAngle_sincos(const encoder_t *self, uint16_t raw_ang, foc_sin_cos_t *sincos)

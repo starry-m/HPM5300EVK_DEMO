@@ -81,10 +81,10 @@ int electrical_angle_calibration(MotorClass_t *motor)
     for (int i = 0; i < 11; i++)
     {
         int diff = ang_table[i] - ang_table[i + 1];
-        if (diff > INT16_MAX)
-            ang_table[i + 1] += 65536;
-        else if (diff < INT16_MIN)
-            ang_table[i + 1] -= 65536;
+        if (diff > 2047)
+            ang_table[i + 1] += 4096;
+        else if (diff < -2048)
+            ang_table[i + 1] -= 4096;
     }
 
     pwm_disable_all_output();
@@ -101,18 +101,18 @@ int electrical_angle_calibration(MotorClass_t *motor)
         return -1;
     }
 
-    int16_t pole_pairs = 1 / (fabsf(b) * 2 * F_PI / 65536.0f) + 0.5f;
+    int16_t pole_pairs = 1 / (fabsf(b) * 2 * F_PI / 4096.0f) + 0.5f;
     uint16_t offset = a + 0.5f;
     if (b < 0)
     {
-        offset += 65536.0f / 2 / pole_pairs;
+        offset += 4096.0f / 2 / pole_pairs;
         pole_pairs = -pole_pairs;
     }
 //    SEGGER_RTT_printf(0, "calibration success: direction = %d, offset = %d, pole_pairs = %d\n", b > 0, offset,
 //                      pole_pairs);
     rt_kprintf("calibration success: direction = %d, offset = %d, pole_pairs = %d\n", b > 0, offset, pole_pairs);
 
-    motor->encoder.pole_pairs = pole_pairs;
+    motor->encoder.pole_pairs = pole_pairs;//pole_pairs
     motor->encoder.ang_offset = offset;
 
     return 0;

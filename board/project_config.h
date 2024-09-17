@@ -27,13 +27,13 @@ extern "C" {
 
 /* 时间参数 */
 #define PWM_FREQUENCY 50000                     // PWM频率(Hz)
-#define SPEED_PID_FREQUENCY 5000                // 速度、位置环频率(Hz)
+#define SPEED_PID_FREQUENCY 1000                // 速度、位置环频率(Hz)
 #define ELECTRICAL_ANGLE_CALIBRATION_POWER 0.4f // 电角度校准油门
-#define ELECTRICAL_ANGLE_CALIBRATION_DELAY 500  // 电角度校准延迟(ms)
+#define ELECTRICAL_ANGLE_CALIBRATION_DELAY 100  // 电角度校准延迟(ms)
 
 /* ADC参数 */
-#define SAMPLING_RESISTOR 0.005f                      // 采样电阻 Ω
-#define CURRENT_AMP 20.0f                             // 电流运放放大倍数
+#define SAMPLING_RESISTOR 0.01f                      // 采样电阻 Ω
+#define CURRENT_AMP 50.0f                             // 电流运放放大倍数
 #define CURRENT_COE (SAMPLING_RESISTOR * CURRENT_AMP) // 电流系数 V/A
 #define VOLTAGE_AMP 11.0f                             // 母线电压放大倍数
 #define ADC_IGNORE_BIT 0                              // ADC低位舍弃

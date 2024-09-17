@@ -6,6 +6,9 @@
 C_SRCS += \
 ../libraries/hpm_sdk/components/dma_mgr/hpm_dma_mgr.c 
 
+O_SRCS += \
+../libraries/hpm_sdk/components/dma_mgr/hpm_dma_mgr.o 
+
 OBJS += \
 ./libraries/hpm_sdk/components/dma_mgr/hpm_dma_mgr.o 
 

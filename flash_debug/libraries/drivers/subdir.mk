@@ -6,14 +6,25 @@
 C_SRCS += \
 ../libraries/drivers/drv_adc.c \
 ../libraries/drivers/drv_gpio.c \
+../libraries/drivers/drv_hwtimer.c \
 ../libraries/drivers/drv_i2c.c \
 ../libraries/drivers/drv_pwm.c \
 ../libraries/drivers/drv_spi.c \
 ../libraries/drivers/drv_uart_v2.c 
 
+O_SRCS += \
+../libraries/drivers/drv_adc.o \
+../libraries/drivers/drv_gpio.o \
+../libraries/drivers/drv_hwtimer.o \
+../libraries/drivers/drv_i2c.o \
+../libraries/drivers/drv_pwm.o \
+../libraries/drivers/drv_spi.o \
+../libraries/drivers/drv_uart_v2.o 
+
 OBJS += \
 ./libraries/drivers/drv_adc.o \
 ./libraries/drivers/drv_gpio.o \
+./libraries/drivers/drv_hwtimer.o \
 ./libraries/drivers/drv_i2c.o \
 ./libraries/drivers/drv_pwm.o \
 ./libraries/drivers/drv_spi.o \
@@ -22,6 +33,7 @@ OBJS += \
 C_DEPS += \
 ./libraries/drivers/drv_adc.d \
 ./libraries/drivers/drv_gpio.d \
+./libraries/drivers/drv_hwtimer.d \
 ./libraries/drivers/drv_i2c.d \
 ./libraries/drivers/drv_pwm.d \
 ./libraries/drivers/drv_spi.d \

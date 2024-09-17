@@ -6,6 +6,9 @@
 C_SRCS += \
 ../libraries/hpm_sdk/soc/HPM5300/HPM5361/boot/hpm_bootheader.c 
 
+O_SRCS += \
+../libraries/hpm_sdk/soc/HPM5300/HPM5361/boot/hpm_bootheader.o 
+
 OBJS += \
 ./libraries/hpm_sdk/soc/HPM5300/HPM5361/boot/hpm_bootheader.o 
 

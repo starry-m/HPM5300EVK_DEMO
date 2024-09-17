@@ -7,6 +7,10 @@ S_UPPER_SRCS += \
 ../startup/HPM5361/toolchains/gcc/port_gcc.S \
 ../startup/HPM5361/toolchains/gcc/start.S 
 
+O_SRCS += \
+../startup/HPM5361/toolchains/gcc/port_gcc.o \
+../startup/HPM5361/toolchains/gcc/start.o 
+
 OBJS += \
 ./startup/HPM5361/toolchains/gcc/port_gcc.o \
 ./startup/HPM5361/toolchains/gcc/start.o 

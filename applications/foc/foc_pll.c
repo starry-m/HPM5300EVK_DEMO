@@ -31,7 +31,7 @@ void foc_pll(foc_pll_t *pll, const foc_sin_cos_t *input)
 
 void foc_pll2(foc_pll_t *pll, uint16_t raw_ang)
 {    
-    int16_t diff = foc_pid_diff(raw_ang, pll->last_ang, 65536);
+    int16_t diff = foc_pid_diff(raw_ang, pll->last_ang, 4096);
     pll->last_ang = raw_ang;
     pll->speed += (diff / 65536.0f - pll->speed) * pll->pi.kp;
     pll->speed = foc_pid_limit(pll->speed, pll->pi.output_limit);

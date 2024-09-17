@@ -6,6 +6,9 @@
 C_SRCS += \
 ../libraries/misc/rtt_interrupt_util/hpm_rtt_interrupt_util.c 
 
+O_SRCS += \
+../libraries/misc/rtt_interrupt_util/hpm_rtt_interrupt_util.o 
+
 OBJS += \
 ./libraries/misc/rtt_interrupt_util/hpm_rtt_interrupt_util.o 
 
